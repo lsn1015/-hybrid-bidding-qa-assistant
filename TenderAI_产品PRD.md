@@ -94,10 +94,11 @@
 
 * Hybrid AI架构：RAG + NL2SQL + 中间表示(IR)
 * 提供精准问答、文件理解、投标决策辅助
-![img.png](../img.png)
+<img width="633" height="1360" alt="4cf8e3a0a268b94a6cb9a68c2794b7ae" src="https://github.com/user-attachments/assets/8a150681-301f-4ed2-a707-9ecf4c8454dc" />
+
 ### 4.3 Query处理流程
 
-![img_1.png](../img_1.png)
+<img width="1538" height="1219" alt="image" src="https://github.com/user-attachments/assets/3f52ac84-f738-44c4-9f60-5c1041cfc668" />
 
 ### 4.4 IR中间层设计
 

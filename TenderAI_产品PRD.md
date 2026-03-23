@@ -86,19 +86,28 @@
 | 功能          | 描述                      | 实现方案                       |
 | ----------- | ----------------------- | -------------------------- |
 | 招标/中标公告智能查询 | 用户自然语言查询招标/中标信息，返回结构化结果 | RAG + 向量检索 + MySQL + LLM校验 |
-| 供应关系查询      | 查询企业历史投标关系与供应链结构        | 知识图谱（可选）+ NL2SQL + MySQL   |
+| 供应关系查询      | 查询企业历史投标关系与供应链结构        | 知识图谱+ NL2SQL + MySQL   |
 | 投标建议生成      | 基于招标文件和历史数据生成投标建议       | RAG + 外部数据接口（企查查等） + LLM推理 |
 | 法律法规检索      | 查询政府采购相关法规并生成解释         | 法规知识库 + RAG                |
 
 ### 4.2 功能架构
 
-* Hybrid AI架构：RAG + NL2SQL + 中间表示(IR)
-* 提供精准问答、文件理解、投标决策辅助
-<img width="633" height="1360" alt="4cf8e3a0a268b94a6cb9a68c2794b7ae" src="https://github.com/user-attachments/assets/8a150681-301f-4ed2-a707-9ecf4c8454dc" />
+* <p align="center">
+  <img src="https://github.com/user-attachments/assets/8a150681-301f-4ed2-a707-9ecf4c8454dc" width="700"/>
+</p>
+<p align="center">
+  <em>图4-2 功能架构图 </em>
+</p>
+
 
 ### 4.3 Query处理流程
 
-<img width="1538" height="1219" alt="image" src="https://github.com/user-attachments/assets/3f52ac84-f738-44c4-9f60-5c1041cfc668" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3f52ac84-f738-44c4-9f60-5c1041cfc668" width="1350"/>
+</p>
+<p align="center">
+  <em>图4-3 用户提问处理流程（RAG + SQL混合链路）</em>
+</p>
 
 ### 4.4 IR中间层设计
 
@@ -263,7 +272,7 @@
 | 招标信息查询 | ✅    | ❌    | ❌    | ✅    |
 | 企业关系分析 | ❌    | ✅    | ❌    | ✅    |
 | 智能问答   | ❌    | ❌    | ✅    | ✅    |
-| 投标建议   | ❌    | ❌    | ❌    | ✅🔥  |
+| 投标建议   | ❌    | ❌    | ❌    | ✅   |
 | 行业知识库  | ❌    | ❌    | ❌    | ✅    |
 | 数据融合能力 | ❌    | ❌    | ❌    | ✅    |
 

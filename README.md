@@ -5,6 +5,47 @@
 - **用户流程图**：[Figma 流程图](https://ribbon-factor-19389736.figma.site/)
 - **产品原型**：[Figma 原型](https://mango-sheep-74625288.figma.site/)
 
+<h3 align="center">智能问答路由与置信度校验流程</h3>
+
+```mermaid
+graph LR
+    subgraph 输入层
+        A[用户 Query] --> B[意图识别<br/>置信度计算]
+    end
+    
+    subgraph 路由层
+        B --> C{置信度 ≥ 阈值?}
+        C -->|否| D[Fallback / 转人工]
+        C -->|是| E{意图路由}
+    end
+    
+    subgraph 数据检索层
+        E -->|知识问答| F[(RAG 检索<br/>知识库)]
+        E -->|数据查询| G[(SQL 数据库)]
+        F --> H[检索结果]
+        G --> H
+    end
+    
+    subgraph 生成层
+        H --> I[LLM 生成<br/>Intermediate Representation]
+        I --> J{置信度校验}
+        J -->|达标| K[LLM 语义输出]
+        J -->|不达标| D
+    end
+    
+    subgraph 输出层
+        K --> L[最终回复]
+        D --> L
+    end
+    
+    style C fill:#FFA500,stroke:#333,stroke-width:2px,color:#000
+    style J fill:#FFA500,stroke:#333,stroke-width:2px,color:#000
+    style F fill:#4CAF50,stroke:#333,stroke-width:2px,color:#fff
+    style G fill:#4CAF50,stroke:#333,stroke-width:2px,color:#fff
+    style D fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#fff
+    style L fill:#E0E0E0,stroke:#333,stroke-width:2px,color:#000
+```
+
 ---
 
 ## 一、系统架构概览
